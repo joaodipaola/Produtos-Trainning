@@ -1,0 +1,59 @@
+<mvc:View
+    controllerName="trainning.produto.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                        <t:Table
+                        cellClick=".onClickCell"
+                            id="table"
+                            rows="{products>/}"
+                            selectionMode="MultiToggle"
+                            visibleRowCount="15"
+                            ariaLabelledBy="title"
+                            busy="{viewModel>/busy}">
+                            <t:extension>
+                                <OverflowToolbar style="Clear">
+                                    <Title id="title" text="Products"/>
+                                </OverflowToolbar>
+                            </t:extension>
+                            <t:columns>
+                                <t:Column width="11rem">
+                                    <Label text="{i18n>product}" />
+                                    <t:template>
+                                        <Text text="{products>ProductName}" wrapping="false" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="11rem">
+                                    <Label text="{i18n>UnitPrice}" />
+                                    <t:template>
+                                        <Text text="{products>UnitPrice}" wrapping="false" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="11rem">
+                                    <Label text="{i18n>UnitsInStock}" />
+                                    <t:template>
+                                        <ObjectStatus text="{products>UnitsInStock}" state="{= ${products>UnitsInStock} > 30 ? 'Success':'Warning'}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="11rem">
+                                    <Label text="{i18n>Discontinued}" />
+                                    <t:template>
+                                        <ObjectStatus text="{path: 'products>Discontinued', formatter: '.formatter.status'}" 
+                                                      state="{= ${products>Discontinued} ? 'Error':'Success'}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

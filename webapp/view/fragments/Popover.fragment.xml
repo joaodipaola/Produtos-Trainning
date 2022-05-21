@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+	<ResponsivePopover
+		id="myPopover"
+		title="{i18n>popoverTitle}"
+		class="sapUiContentPadding"
+		placement="Bottom" 
+        contentWidth="500px">
+
+		<endButton>
+			<Button text="{i18n>close}" press="handleCloseButton" />
+		</endButton>
+		<content>
+            <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="{i18n>detailPopover}"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label text="{i18n>supplierID}" />
+                    <Text id="nameText" text="{products>SupplierID}" />
+                    <Label text="{i18n>CategoryID}" />
+                    <Text text="{products>CategoryID}" />
+                    <Label text="{i18n>product}" />
+                    <Text text="{products>ProductName}" />
+                </f:content>
+            </f:SimpleForm>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>
