@@ -23,6 +23,7 @@ sap.ui.define([
                 let oProducts = this.callServices('Products').get()
 
                 oProducts.then(answer => {
+                    debugger
                     this.getView().setModel(new JSONModel(answer.results), "products")
                     this.oModelView.setProperty("/busy", false)
                 }).catch(error => {
